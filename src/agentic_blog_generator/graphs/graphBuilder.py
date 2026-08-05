@@ -1,6 +1,7 @@
 from langgraph.graph import StateGraph, START, END
 from src.agentic_blog_generator.llms.groqllm import GroqLLM
 from src.agentic_blog_generator.states.blogState import BlogState
+from src.agentic_blog_generator.nodes.blogNode import BlogNode
 
 class GraphBuilder:
     def __init__(self, llm):
@@ -12,9 +13,11 @@ class GraphBuilder:
         Build a graph to generate blogss based on topic
         """
 
+        obj_blogNode = BlogNode(self.llm)
+
         #Nodes
-        self.graph.add_node("title_creation",)
-        self.graph.add_node("content_generator",)
+        self.graph.add_node("title_creation",obj_blogNode.title_creation)
+        self.graph.add_node("content_generator", BlogNode.content_generation)
 
         #Edges
         self.graph.add_edge(START, "title_creation")
@@ -23,5 +26,7 @@ class GraphBuilder:
 
         return self.graph
 
-    
+    def setupGraph(self, usecase):
+        if usecase == "topic":
+            self.build_topic_graph()
 
