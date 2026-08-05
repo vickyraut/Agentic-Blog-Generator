@@ -49,8 +49,10 @@ def render_sidebar():
     st.sidebar.markdown("---")
     st.sidebar.markdown(
         """
-        <div style="font-size: 0.8rem; color: #64748B; text-align: center;">
-            Powered by <strong>LangGraph</strong> & <strong>Groq Llama 3.1</strong>
+        <div style="font-size: 0.85rem; color: #94A3B8; text-align: center; line-height: 1.6;">
+            Made with ❤️ by <a href="https://vickyraut.vercel.app/" target="_blank" style="color: #38BDF8; text-decoration: none; font-weight: 600;">Vicky V. Raut (CodeMonk)</a>
+            <br>
+            <span style="font-size: 0.75rem; color: #64748B;">Powered by <strong>LangGraph</strong> & <strong>Groq Llama 3.1</strong></span>
         </div>
         """,
         unsafe_allow_html=True
