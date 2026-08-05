@@ -19,7 +19,7 @@ async def create_blogs(request:Request):
 
     # Get LLM Object
 
-    groqllm = GroqLLM
+    groqllm = GroqLLM()
     llm = groqllm.get_llm()
 
     # Get the graph

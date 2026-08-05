@@ -17,7 +17,7 @@ class GraphBuilder:
 
         #Nodes
         self.graph.add_node("title_creation",obj_blogNode.title_creation)
-        self.graph.add_node("content_generator", BlogNode.content_generation)
+        self.graph.add_node("content_generator", obj_blogNode.content_generation)
 
         #Edges
         self.graph.add_edge(START, "title_creation")
@@ -30,3 +30,10 @@ class GraphBuilder:
         if usecase == "topic":
             self.build_topic_graph()
 
+        return self.graph.compile()
+
+# Below code is for Lamgsmith & Langgraph Studio
+llm = GroqLLM().get_llm()
+
+graph_builder = GraphBuilder(llm)
+graph=graph_builder.build_topic_graph().compile()
