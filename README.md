@@ -285,22 +285,6 @@ Content-Type: application/json
 
 ---
 
-## Future Improvements
-
-The following features are planned for future releases:
-
-- [ ] **User Authentication & RBAC**: JWT-based session management and user workspace isolation.
-- [ ] **Blog History Persistence**: PostgreSQL / SQLite database integration for saving generated posts.
-- [ ] **Native PDF & EPUB Exporting**: Enhanced PDF typography rendering with multi-font UTF-8 support.
-- [ ] **Streaming Agent Responses**: Real-time token streaming from graph nodes to UI via Server-Sent Events (SSE).
-- [ ] **Automated Image Generation**: Integration with Flux / Stable Diffusion for automatic blog cover image generation.
-- [ ] **Deep Research Agent**: Autonomous web search agent using Tavily to retrieve current facts and source references.
-- [ ] **Fact-Checking Agent**: Validation node to check technical claims before output compilation.
-- [ ] **SEO Score Reviewer**: Real-time keyword density and readability scoring.
-- [ ] **CMS Publishing Integration**: One-click publishing to Medium, WordPress, and Dev.to via OAuth REST APIs.
-
----
-
 ## Contributing
 
 Contributions are welcome! Please follow these steps:
