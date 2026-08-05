@@ -13,26 +13,31 @@ os.environ["LANGSMITH_API_KEY"] = os.getenv("LANGCHAIN_API_KEY")
 
 ## APIs
 @app.post("/blogs")
-async def create_blogs(request:Request):
+async def create_blogs(request: Request):
     data = await request.json()
-    topic = data.get("topic", "")
-    language = data.get("language", "")
+    topic = data.get("topic", "").strip()
+    language = data.get("language", "English").strip()
+    blog_length = data.get("blog_length", "Medium").strip()
+
+    if not topic:
+        return {"error": "Topic is required"}
 
     # Get LLM Object
-
     groqllm = GroqLLM()
     llm = groqllm.get_llm()
 
     # Get the graph
-    graph_buider = GraphBuilder(llm)
-    if topic and language:
-        graph = graph_buider.setupGraph(usecase="language")
-        state  = graph.invoke({"topic":topic, "current_language":language.lower()})
-    elif topic:
-        graph = graph_buider.setupGraph(usecase="topic")
-        state  = graph.invoke({"topic":topic})
+    graph_builder = GraphBuilder(llm)
+    graph = graph_builder.setupGraph()
+
+    state = graph.invoke({
+        "topic": topic,
+        "current_language": language,
+        "blog_length": blog_length
+    })
 
     return {"data": state}
+
 
 
 if __name__=="__main__":
